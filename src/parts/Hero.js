@@ -55,7 +55,7 @@ export default function Hero(props) {
         </div>
 
         <div className="col-6 pl-5">
-          <div style={{ width: 520, height: 410 }}>
+          <div style={{ width: 520, height: 450 }}>
             <img src={ImageHero} alt="Room with couches" className="img-fluid position-absolute" style={{ margin: '-30px 0 0 -30px', zIndex: 1 }} />
             <img src={ImageHero_} alt="Room with couches frame" className="img-fluid position-absolute" style={{ margin: '15px -15px -15px 0' }} />
           </div>
