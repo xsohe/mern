@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import propTypes from 'prop-types';
-import { cs } from 'date-fns/locale';
 import { InputDate, InputNumber } from 'elements/Form';
 import Button from 'elements/Button';
 
