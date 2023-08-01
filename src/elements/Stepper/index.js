@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import propTypes, { func } from 'prop-types';
+import propTypes from 'prop-types';
 
 export default function Stepper(props) {
   const { steps, initialStep } = props;
