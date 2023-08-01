@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import propTypes from 'prop-types';
 
 export default function Stepper(props) {
@@ -22,5 +23,10 @@ export default function Stepper(props) {
 
 Stepper.propTypes = {
   data: propTypes.object.isRequired,
-  initialStep: propTypes.string.isRequired,
+  initialStep: propTypes.string,
 };
+
+export { default as Numbering } from './Numbering';
+export { default as Meta } from './Meta';
+export { default as Controller } from './Controller';
+export { default as MainContent } from './MainContent';
