@@ -15,7 +15,7 @@ export default function Payment(props) {
 
   return (
     <Fade>
-      <div className="container">
+      <div className="container" style={{ marginBottom: 30 }}>
         <div className="row justify-content-center align-items-center">
           <div className="col-5 border-right py-5" style={{ paddingRight: 80 }}>
             <Fade delay={300}>
