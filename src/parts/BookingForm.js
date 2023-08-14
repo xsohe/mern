@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 
 import propTypes from 'prop-types';
 import { InputDate, InputNumber } from 'elements/Form';
 import Button from 'elements/Button';
 
-export default class BookingForm extends Component {
+class BookingForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -70,6 +71,7 @@ export default class BookingForm extends Component {
         endDate: data.date.endDate,
       },
     });
+    this.props.history.push('/checkout');
   };
 
   render() {
@@ -108,3 +110,5 @@ BookingForm.propTypes = {
   itemDetails: propTypes.object,
   startBooking: propTypes.func,
 };
+
+export default withRouter(BookingForm);
