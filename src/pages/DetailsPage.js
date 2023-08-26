@@ -14,13 +14,18 @@ import Footer from 'parts/Footer';
 import ItemDetails from 'json/itemDetails.json';
 
 import { checkoutBooking } from 'store/actions/checkout';
+import { fetchPage } from 'store/actions/page';
 
 class DetailsPage extends Component {
   componentDidMount() {
     window.title = 'Details Page';
     window.scroll(0, 0);
+
+    if (!this.props.page[this.props.params.id]);
+    this.props.fetchPage(`${process.env.REACT_APP_HOST}/api/v1/member/detail-page/${this.props.params.id}`);
   }
   render() {
+    const { page, params } = this.props;
     const breadcrumb = [
       { pageTitle: 'Home', pageHref: '' },
       { pageTitle: 'House Details', pageHref: '' },
@@ -28,29 +33,33 @@ class DetailsPage extends Component {
     return (
       <>
         <Header {...this.props} />
-        <PageDetailTitle breadcrumb={breadcrumb} data={ItemDetails} />
-        <FeaturedImage data={ItemDetails.imageUrls} />
+        <PageDetailTitle breadcrumb={breadcrumb} data={page[params.id]} />
+        <FeaturedImage data={page[params.id].imageUrls} />
         <section className="container">
           <div className="row">
             <div className="col-7 pr-5">
               <Fade bottom>
-                <PageDetailDescription data={ItemDetails} />
+                <PageDetailDescription data={page[params.id]} />
               </Fade>
             </div>
             <div className="col-5">
               <Fade bottom>
-                <BookingForm itemDetails={ItemDetails} startBooking={this.props.checkoutBooking} />
+                <BookingForm itemDetails={page[params.id]} startBooking={this.props.checkoutBooking} />
               </Fade>
             </div>
           </div>
         </section>
 
-        <Categories data={ItemDetails.categories} />
-        <Testimony data={ItemDetails.testimonial} />
+        <Categories data={page[params.id].categories} />
+        <Testimony data={page[params.id].testimonial} />
         <Footer />
       </>
     );
   }
 }
 
-export default connect(null, { checkoutBooking })(DetailsPage);
+const mapStateToProps = (state) => ({
+  page: state.page.detailsPage,
+});
+
+export default connect(mapStateToProps, { checkoutBooking, fetchPage })(DetailsPage);
